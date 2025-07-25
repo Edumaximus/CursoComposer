@@ -1,0 +1,43 @@
+{
+    "name": "edumaximus/buscador-cursos",
+    "description": "Projeto que busca os cursos no cursos no site da Alura",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Edumaximus",
+            "email": "eduardozaduski@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/dom-crawler": "^4.2",
+        "symfony/css-selector": "^7.3"
+    },
+    "autoload": {
+        "files": ["./functions.php"],
+        "psr-4": {
+            "Alura\\BuscadorDeCursos\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.2",
+        "squizlabs/php_codesniffer": "^3.13",
+        "phan/phan": "^5.5"
+    },
+    "scripts": {
+        "test": "phpunit tests\\TestBuscadorDeCursos.php",
+        "cs": "phpcs --standard=PSR12 src/",
+        "phan": "phan --allow-polyfill-parser",
+        "check": [
+            "@phan",
+            "@cs",
+            "@test"
+        ],
+        "post-update-cmd": [
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Roda as verificações do código. PHAN, PHPCS e PHPUNIT"
+    }
+}
